@@ -22,7 +22,7 @@
           <template #actions>
             <v-card-actions>
               <v-spacer></v-spacer>
-              <v-btn dark color="green" @click="onSubmit"> ยืนยัน </v-btn>
+              <v-btn :disabled="isDisabled" color="green" @click="onSubmit"> ยืนยัน </v-btn>
               <v-btn color="error" @click="onCancel"> ยกเลิก </v-btn>
             </v-card-actions>
           </template>
@@ -53,7 +53,13 @@ export default {
     return {
       dialog: false,
       amount: null,
+      maxInput: 100000
     }
+  },
+  computed: {
+    isDisabled() {
+      return !this.amount || this.amount > this.maxInput
+    },
   },
   watch: {
     show(isShow) {

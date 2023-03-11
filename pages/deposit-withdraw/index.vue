@@ -14,10 +14,10 @@
             <template #actions>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn :disabled="!amount" color="green" @click="deposit()">
+                <v-btn :disabled="isDisabled" color="green" @click="deposit()">
                   ฝาก
                 </v-btn>
-                <v-btn :disabled="!amount" color="error" @click="withdraw()">
+                <v-btn :disabled="isDisabled" color="error" @click="withdraw()">
                   ถอน
                 </v-btn>
               </v-card-actions>
@@ -49,12 +49,16 @@ export default {
     return {
       label: 'จำนวนเงินคงเหลือ',
       amount: null, // จำนวนเงิน
+      maxInput: 100000
     }
   },
   head: {
     title: 'ฝาก-ถอน',
   },
   computed: {
+    isDisabled() {
+      return !this.amount || this.amount > this.maxInput
+    },
     ...mapGetters({
       totalAmount: `${transaction.MODULE_NAME}/totalDepositAmount`, // ยอดคงเหลือ
     }),
