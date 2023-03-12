@@ -22,8 +22,8 @@
           <template #actions>
             <v-card-actions>
               <v-spacer></v-spacer>
-              <v-btn :disabled="isDisabled" color="green" @click="onSubmit"> ยืนยัน </v-btn>
-              <v-btn color="error" @click="onCancel"> ยกเลิก </v-btn>
+              <v-btn title="ยืนยัน"  :disabled="isDisabled" color="primary" @click="onSubmit"> ยืนยัน </v-btn>
+              <v-btn title="ยกเลิก" color="error" @click="onCancel"> ยกเลิก </v-btn>
             </v-card-actions>
           </template>
         </DepositWithdrawForm>

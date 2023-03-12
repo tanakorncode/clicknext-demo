@@ -8,37 +8,37 @@
               <v-toolbar-title>Clicknext</v-toolbar-title>
             </v-toolbar>
             <v-card-text>
-              <ValidationProvider name="Email" rules="required|email" v-slot="{ valid, errors }">
+              <ValidationProvider v-slot="{ valid, errors }" name="Email" rules="required|email">
                 <v-text-field
                   id="email"
+                  v-model="form.email"
                   prepend-icon="mdi-email"
                   name="email"
                   label="Email"
                   type="email"
                   :success="valid && form.email !== ''"
                   required
-                  v-model="form.email"
                   :hide-details="!errors[0]"
                   :error-messages="errors"
                   class="mb-2"
                 ></v-text-field>
               </ValidationProvider>
               <ValidationProvider
+                v-slot="{ valid, errors }"
                 name="Password"
                 rules="required|min:8"
-                v-slot="{ valid, errors }"
               >
                 <v-text-field
+                  id="password"
+                  v-model="form.password"
                   :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
                   :type="show ? 'text' : 'password'"
-                  id="password"
                   prepend-icon="mdi-lock"
                   name="password"
                   label="Password"
                   :error-messages="errors"
                   :success="valid && form.password !== ''"
                   required
-                  v-model="form.password"
                   :hide-details="!errors[0]"
                   @click:append="show = !show"
                 ></v-text-field>

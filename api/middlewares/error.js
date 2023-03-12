@@ -59,13 +59,6 @@ exports.converter = (err, req, res, next) => {
       status: 400,
       stack: err.stack,
     })
-  } else if (err instanceof queryql.ValidationError) {
-    convertedError = new APIError({
-      errors: err.errors,
-      message: err.message,
-      status: 400,
-      stack: err.stack,
-    })
   } else if (isAxiosError) {
     // const { status } = err.response
     const message = _.get(err.response, 'data.error', err.message)

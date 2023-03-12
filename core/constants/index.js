@@ -1,0 +1,5 @@
+export const SET_USER = 'setUser'
+export const ADD_CANCEL_TOKEN = 'cancelToken'
+export const CLEAR_CANCEL_TOKENS = 'clearCancelTokens'
+export const RESET_STORE = 'resetStore'
+export const CANCEL_PENDING_REQUESTS = 'cancelPeddingRequests'

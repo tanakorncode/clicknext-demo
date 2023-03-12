@@ -7,17 +7,17 @@
             <template #header>
               <v-row>
                 <v-col cols="12" class="text-center">
-                  <h4>{{ label }} {{ totalAmount | totalFormat }} บาท</h4>
+                  <h4>{{ label }} <b>{{ totalAmount | totalFormat }}</b> บาท</h4>
                 </v-col>
               </v-row>
             </template>
             <template #actions>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn :disabled="isDisabled" color="green" @click="deposit()">
+                <v-btn title="ฝาก" :disabled="isDisabled" color="primary" @click="deposit()">
                   ฝาก
                 </v-btn>
-                <v-btn :disabled="isDisabled" color="error" @click="withdraw()">
+                <v-btn title="ถอน" :disabled="isDisabled" color="error" @click="withdraw()">
                   ถอน
                 </v-btn>
               </v-card-actions>

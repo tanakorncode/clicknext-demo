@@ -1,4 +1,3 @@
-const yup = require('yup')
 
 /**
  *

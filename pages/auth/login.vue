@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import * as constants from '@/core/constants'
 import { mapMutations } from 'vuex'
 
 export default {
@@ -57,7 +58,7 @@ export default {
       }
     },
     ...mapMutations({
-      setUser: 'SET_USER'
+      setUser: constants.SET_USER
     })
   },
 }

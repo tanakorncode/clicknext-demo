@@ -1,7 +1,6 @@
 'use strict'
 
 const yup = require('yup')
-const _ = require('lodash')
 
 module.exports = (validation = {}) => {
   return async (req, res, next) => {

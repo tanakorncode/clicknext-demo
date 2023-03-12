@@ -1,3 +1,5 @@
+import * as constants from '@/core/constants'
+
 // const cookieparser = process.server ? require('cookieparser') : undefined
 // import createPersistedState from 'vuex-persistedstate'
 import _ from 'lodash'
@@ -8,16 +10,16 @@ export const state = () => ({
 })
 
 export const mutations = {
-  SET_USER(state, user) {
+  [constants.SET_USER](state, user) {
     state.authUser = user
   },
-  ADD_CANCEL_TOKEN(state, token) {
+  [constants.ADD_CANCEL_TOKEN](state, token) {
     state.cancelTokens.push(token)
   },
-  CLEAR_CANCEL_TOKENS(state) {
+  [constants.CLEAR_CANCEL_TOKENS](state) {
     state.cancelTokens = []
   },
-  RESET_STORE: (state) => {
+  [constants.RESET_STORE]: (state) => {
     state.authUser = null
     state.token = null
   },
@@ -39,7 +41,7 @@ export const actions = {
   // nuxtServerInit is called by Nuxt before server-rendering every page
   nuxtServerInit({ commit }, { req }) {
     if (req.session && req.session.authUser) {
-      commit('SET_USER', req.session.authUser)
+      commit(constants.SET_USER, req.session.authUser)
     }
     // if (req && req.headers && req.headers.cookie) {
     //   const parsed = cookieparser.parse(req.headers.cookie)
@@ -47,10 +49,10 @@ export const actions = {
   },
 
   logout({ commit }) {
-    commit('SET_USER', null)
+    commit(constants.SET_USER, null)
   },
 
-  CANCEL_PENDING_REQUESTS(context) {
+  [constants.CANCEL_PENDING_REQUESTS](context) {
     // Cancel all request where a token exists
     context.state.cancelTokens.forEach((request, i) => {
       if (request.cancel && typeof request.cancel === 'function') {
@@ -59,6 +61,6 @@ export const actions = {
     })
 
     // Reset the cancelTokens store
-    context.commit('CLEAR_CANCEL_TOKENS')
+    context.commit(constants.CLEAR_CANCEL_TOKENS)
   },
 }

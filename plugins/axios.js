@@ -1,3 +1,5 @@
+import * as constants from '@/core/constants'
+
 import _ from 'lodash'
 
 export default function ({ $axios, redirect, store }) {
@@ -13,7 +15,7 @@ export default function ({ $axios, redirect, store }) {
     config.cancelToken = source.token
 
     // Add to vuex to make cancellation available from anywhere
-    store.commit('ADD_CANCEL_TOKEN', source)
+    store.commit(constants.ADD_CANCEL_TOKEN, source)
 
     return config
   })
@@ -30,7 +32,7 @@ export default function ({ $axios, redirect, store }) {
     if (code === 400) {
       redirect('/400')
     } */
-    store.dispatch('CANCEL_PENDING_REQUESTS')
+    store.dispatch(constants.CANCEL_PENDING_REQUESTS)
     if (_.get(error, 'response.data') && _.get(error, 'response.data.data')) {
       return Promise.reject(_.get(error, 'response.data.data', error.response.data))
     }
