@@ -96,7 +96,7 @@ export default {
       if (value.isConfirmed) {
         const item = {
           amount: _this.amount,
-          state: 'deposit',
+          state: transaction.DEPOSIT_STATE,
         }
         _this.addItem(item)
         _this.clearForm()
@@ -136,7 +136,7 @@ export default {
       if (value.isConfirmed) {
         const item = {
           amount: _this.amount,
-          state: 'withdraw',
+          state: transaction.WITHDRAW_STAE,
         }
         _this.addItem(item)
         _this.clearForm()
